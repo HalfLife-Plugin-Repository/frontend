@@ -6,6 +6,8 @@ import * as colors from './colors';
 
 const common = {
     content:{
+        position: 'relative',
+        minHeight: 'inherit',
         padding: '0 15px',
         boxSizing: 'border-box',
         width: '100%',

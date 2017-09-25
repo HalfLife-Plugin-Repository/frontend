@@ -1,7 +1,9 @@
 import React, {PropTypes} from 'react';
 import Radium from 'radium';
+import moment from 'moment';
+import {connect} from 'react-redux';
+import Link from 'react-router/lib/Link';
 import Divider from 'components/Divider';
-import StyledLink from 'components/StyledLink';
 import {AMXModX, MetaMod, SourceMod} from 'components/Tags';
 import {common, blue500, blue700, grey300} from 'styles';
 
@@ -33,13 +35,18 @@ const style = {
     }
 };
 
+const formatDate = (date) => {
+    console.log(moment(date).fromNow());
+    return moment(date).fromNow();
+};
+
 const Plugin = (props) => (
     <div style={style.container}>
         <div style={style.tag}>
             {{
-                'amx': <AMXModX/>,
-                'mm': <MetaMod/>,
-                'sm': <SourceMod/>
+                'amx_mod_x': <AMXModX/>,
+                'metamod': <MetaMod/>,
+                'sourcemod': <SourceMod/>
             }[props.plugin.mod]}
         </div>
         <div style={style.content}>
@@ -47,25 +54,22 @@ const Plugin = (props) => (
                 common.inlineBlock,
                 common.grey700
             ]}>
-                {props.plugin.title}&nbsp;
+                {props.plugin.name}&nbsp;
             </h5>
             <span style={common.grey500}>
                 by&nbsp;
-                <StyledLink
+                <Link
                     to="/"
-                    style={[
-                        common.noTextDecoration,
-                        style.link
-                    ]}>
-                    {props.plugin.author}
-                </StyledLink>
+                    style={style.link}>
+                    {props.user.username}
+                </Link>
             </span>
             <p style={common.grey500}>{props.plugin.description}</p>
             <span style={[
                 common.grey500,
                 style.last_updated
             ]}>
-                Last Updated {props.plugin.last_updated}
+                Last Updated {formatDate(props.plugin.last_updated)}
             </span>
         </div>
         {props.showDivider &&
@@ -80,7 +84,18 @@ Plugin.defaultProps = {
 
 Plugin.propTypes = {
     plugin: PropTypes.object.isRequired,
-    showDivider: PropTypes.bool
+    showDivider: PropTypes.bool,
+    user: PropTypes.object.isRequired
 };
 
-export default Radium(Plugin);
+const mapStateToProps = (state, props) => {
+    const author = props.plugin.author;
+    const users = state.entities.users;
+    const user = users[author];
+
+    return {
+        user
+    }
+};
+
+export default connect(mapStateToProps)(Radium(Plugin));

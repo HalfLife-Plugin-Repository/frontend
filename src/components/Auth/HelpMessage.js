@@ -20,8 +20,7 @@ const HelpMessage = (props) => (
             to={props.actionTo}
             style={[
                 common.strong,
-                common.white,
-                common.noTextDecoration
+                common.white
             ]}>
             &nbsp;{props.action}
         </StyledLink>

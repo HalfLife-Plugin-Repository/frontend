@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import browserHistory from 'react-router/lib/browserHistory';
 import Flex from 'components/Flex';
 import Logged from './Logged';
 import NotLogged from './NotLogged';
@@ -22,7 +23,8 @@ const style = {
     },
     logo: {
         height: 71,
-        width: 'auto'
+        width: 'auto',
+        cursor: 'pointer'
     }
 };
 
@@ -35,8 +37,12 @@ const Header = (props) => (
             style.base,
             (props.opaque) ? style.opaque : style.transparent
     ]}>
-        <img src={logo} alt="logo" style={style.logo}/>
-        {(props.isAuthenticated) ? <Logged user={props.user}/> : <NotLogged/>}
+        <img
+            alt="logo"
+            onClick={() => browserHistory.push('/')}
+            src={logo}
+            style={style.logo}/>
+        {(props.isAuthenticated) ? <Logged/> : <NotLogged/>}
     </Flex>
 );
 
@@ -48,28 +54,12 @@ Header.defaultProps = {
 Header.propTypes = {
     opaque: PropTypes.bool,
     showSearchBar: PropTypes.bool,
-    isAuthenticated: PropTypes.bool.isRequired,
-    user: PropTypes.object
+    isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
-    const {
-        auth: {
-            isAuthenticated,
-            currentUser
-        },
-        users
-    } = state;
-
-    let user = null;
-    if(isAuthenticated){
-        const {user_id} = currentUser;
-        user = users[user_id];
-    }
-
     return {
-        isAuthenticated,
-        user
+        isAuthenticated: state.auth.isAuthenticated
     }
 };
 

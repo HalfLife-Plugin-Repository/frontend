@@ -51,7 +51,7 @@ class ForgotPassword extends Component {
                     actionTo="/login"
                     question="You just remembered it?"/>
             </div>
-        );
+        )
     }
 }
 

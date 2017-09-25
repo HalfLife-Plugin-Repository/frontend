@@ -86,7 +86,7 @@ class CheckBox extends Component {
                     </label>
                 </Flex>
             </div>
-        );
+        )
     }
 }
 

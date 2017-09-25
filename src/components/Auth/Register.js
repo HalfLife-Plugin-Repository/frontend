@@ -64,7 +64,7 @@ class Register extends Component {
                     actionTo="/login"
                     question="Already have an account?"/>
             </div>
-        );
+        )
     }
 }
 

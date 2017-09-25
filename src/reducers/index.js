@@ -1,12 +1,14 @@
 import {combineReducers} from "redux";
 import auth from './auth';
+import entities from './entities';
+import recently_updated from './recently_updated';
 import stats from './stats';
-import users from './users';
 
 const rootReducer = combineReducers({
     auth,
-    stats,
-    users
+    entities,
+    recently_updated,
+    stats
 });
 
 export default rootReducer;

@@ -1,25 +1,25 @@
 /**
- * @file Describes state changes when a get
- * request is made to retrieve plugin stats.
+ * Describes the state changes when the recently updated
+ * plugins are fetched.
  */
 
-import * as constants from 'constants/stats';
+import * as constants from 'constants/plugins';
 
 export default function(state = {
-    data: null,
+    ids: null,
     isFetching: false
 }, action){
     switch(action.type){
-        case constants.FETCH_STATS_REQUEST:
+        case constants.FETCH_RECENTLY_UPDATED_REQUEST:
             return Object.assign({}, state, {
                 isFetching: true
             });
-        case constants.FETCH_STATS_SUCCESS:
+        case constants.FETCH_RECENTLY_UPDATED_SUCCESS:
             return Object.assign({}, state, {
-                data: action.payload,
+                ids: action.payload.result,
                 isFetching: false
             });
-        case constants.FETCH_STATS_FAILURE:
+        case constants.FETCH_RECENTLY_UPDATED_FAILURE:
             return Object.assign({}, state, {
                 isFetching: false
             });

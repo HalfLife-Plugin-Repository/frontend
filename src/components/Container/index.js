@@ -8,12 +8,12 @@ const style = {
         backgroundColor: white,
         borderRadius: 5,
         marginTop: 20,
-        paddingBottom: 20
+        paddingBottom: 20,
+        paddingTop: 20
     },
     header: {
-        paddingTop: '20px',
-        paddingLeft: '40px',
-        paddingBottom: '20px',
+        paddingLeft: 40,
+        paddingBottom: 20,
         margin: 0
     }
 };

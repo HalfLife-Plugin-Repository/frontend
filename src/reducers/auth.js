@@ -12,18 +12,26 @@ export default function(state={
 }, action){
     switch(action.type){
         case constants.LOGIN_REQUEST:
+        case constants.VERIFY_TOKEN_REQUEST:
             return Object.assign({}, state, {
                 isAuthenticating: true
             });
         case constants.LOGIN_SUCCESS:
+        case constants.VERIFY_TOKEN_SUCCESS:
             return Object.assign({}, state, {
                 isAuthenticating: false,
                 isAuthenticated: true,
                 currentUser: action.payload.currentUser
             });
         case constants.LOGIN_FAILURE:
+        case constants.VERIFY_TOKEN_FAILURE:
             return Object.assign({}, state, {
                 isAuthenticating: false
+            });
+        case constants.LOG_OUT:
+            return Object.assign({}, state, {
+                isAuthenticated: false,
+                currentUser: null
             });
         default:
             return state;

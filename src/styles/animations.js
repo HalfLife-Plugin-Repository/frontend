@@ -26,6 +26,15 @@ const fadeInUp = Radium.keyframes({
     }
 }, 'fadeInUp');
 
+const rotate = Radium.keyframes({
+    '0%':{
+        transform: 'rotate(0deg)'
+    },
+    '100%': {
+        transform: 'rotate(359deg)'
+    }
+}, 'rotate');
+
 const animations = {
     fadeInDown: {
         animation: 'x 1s ease forwards',
@@ -35,6 +44,10 @@ const animations = {
     fadeInUp: {
         animation: 'x 1s ease forwards',
         animationName: fadeInUp,
+    },
+    rotate: {
+        animation: 'x 0.5s linear infinite',
+        animationName: rotate
     }
 };
 

@@ -3,6 +3,7 @@
  */
 
 export const blue500 = "#03A9F4";
+export const blue600 = "#039BE5";
 export const blue700 = "#0288D1";
 export const grey100 = "#F5F5F5";
 export const grey200 = "#EEEEEE";

@@ -39,7 +39,7 @@ const Flex = (props) => {
         ]}>
             {props.children}
         </div>
-    );
+    )
 };
 
 Flex.propTypes = {

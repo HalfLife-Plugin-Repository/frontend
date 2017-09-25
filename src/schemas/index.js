@@ -1,8 +1,12 @@
 import {schema} from 'normalizr';
 
-const user = new schema.Entity('users');
+export const userSchema = new schema.Entity('users');
 
-export const plugin = new schema.Entity({
-    author: user,
-    collaborators: [user]
+export const pluginSchema = new schema.Entity('plugins', {
+    author: userSchema,
+    collaborators: [userSchema]
+}, {
+    idAttribute: 'slug'
 });
+
+export const pluginsSchema = new schema.Array(pluginSchema);

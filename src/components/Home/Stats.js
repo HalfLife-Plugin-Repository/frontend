@@ -5,6 +5,7 @@ import MdApps from 'react-icons/lib/md/apps';
 import MdPeople from 'react-icons/lib/md/people';
 import MdFileDownload from 'react-icons/lib/md/file-download';
 import Flex from 'components/Flex';
+import Spinner from 'components/Spinner';
 import Stat from './Stat';
 import {common, blue500, white} from 'styles';
 import homeStyle from './style';
@@ -12,6 +13,7 @@ import homeStyle from './style';
 const style = {
     container: {
         width: '100%',
+        minHeight: '20vh',
         backgroundColor: white
     }
 };
@@ -27,7 +29,9 @@ class Stats extends Component {
             isFetching
         } = this.props;
         let stats = null;
-        if(!isFetching && data){
+        if(isFetching){
+            stats = <Spinner/>;
+        } else if(data){
             stats = (
                 <Flex
                     justify="space-around"

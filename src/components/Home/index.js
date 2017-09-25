@@ -1,13 +1,13 @@
 import React from 'react';
 import Search from './Search';
 import Stats from './Stats';
-import PopularPlugins from './PopularPlugins';
+import RecentlyUpdated from './RecentlyUpdated';
 
 const Home = (props) => (
     <div>
         <Search/>
         <Stats/>
-        <PopularPlugins/>
+        <RecentlyUpdated/>
     </div>
 );
 

@@ -40,6 +40,13 @@ const rootStyle = {
         margin: '0 0 0.33em 0',
         fontWeight: 300
     },
+    ul: {
+        margin: 0,
+        padding: 0
+    },
+    a: {
+        textDecoration: 'none'
+    },
     mediaQueries: {
         '(min-width: 43.75em)': {
             h1: {

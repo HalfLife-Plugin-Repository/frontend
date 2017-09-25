@@ -71,7 +71,7 @@ class TextField extends Component {
                     type={type}
                     value={value}/>
             </Flex>
-        );
+        )
     }
 }
 

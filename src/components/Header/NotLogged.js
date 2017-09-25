@@ -17,7 +17,6 @@ const NotLogged = (props) => (
             to="/login"
             style={Object.assign({},
                 common.white,
-                common.noTextDecoration,
                 common.strong,
                 style.login
             )}>

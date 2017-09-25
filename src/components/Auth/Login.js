@@ -84,7 +84,6 @@ class Login extends Component {
                         <StyledLink
                             to="/forgot-password"
                             style={[
-                                common.noTextDecoration,
                                 common.grey500,
                                 style.link
                             ]}>
@@ -97,7 +96,7 @@ class Login extends Component {
                     actionTo="/register"
                     question="Don't have an account?"/>
             </div>
-        );
+        )
     }
 }
 

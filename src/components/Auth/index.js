@@ -26,10 +26,10 @@ const Auth = (props) => (
             style.container
     ]}>
         <img
-            src={logo}
             alt="Logo"
-            style={style.logo}
-            onClick={() => browserHistory.push('/')}/>
+            onClick={() => browserHistory.push('/')}
+            src={logo}
+            style={style.logo}/>
         {props.children}
     </Flex>
 );
