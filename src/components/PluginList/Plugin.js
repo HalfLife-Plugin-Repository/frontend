@@ -36,7 +36,6 @@ const style = {
 };
 
 const formatDate = (date) => {
-    console.log(moment(date).fromNow());
     return moment(date).fromNow();
 };
 
@@ -59,7 +58,7 @@ const Plugin = (props) => (
             <span style={common.grey500}>
                 by&nbsp;
                 <Link
-                    to="/"
+                    to={`/user/${props.user.id}`}
                     style={style.link}>
                     {props.user.username}
                 </Link>

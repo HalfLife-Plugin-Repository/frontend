@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {register} from 'actions/auth';
+import {LocalForm, Control} from 'react-redux-form';
 import Button from 'components/Button';
 import Container from 'components/Container';
 import Flex from 'components/Flex';
@@ -13,19 +16,8 @@ const style = {
 };
 
 class Register extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            email: '',
-            username: '',
-            password: ''
-        };
-    }
-
-    handleChange = (name, value) => {
-        this.setState({
-            [name]: value
-        })
+    handleSubmit = (values) => {
+        this.props.register(values);
     };
 
     render(){
@@ -35,28 +27,47 @@ class Register extends Component {
                     header="Register"
                     style={style.container}>
                     <div style={common.form}>
-                        <TextField
-                            label="Email"
-                            name="email"
-                            onChange={this.handleChange}
-                            value={this.state.email}/>
-                        <TextField
-                            label="Username"
-                            name="username"
-                            onChange={this.handleChange}
-                            value={this.state.username}/>
-                        <TextField
-                            label="Password"
-                            name="password"
-                            onChange={this.handleChange}
-                            type="password"
-                            value={this.state.password}/>
-                        <Flex
-                            align="center"
-                            justify="flex-end"
-                            style={common.formActions}>
-                            <Button label="Register"/>
-                        </Flex>
+                        <LocalForm
+                            initialState={{
+                                email: '',
+                                username: '',
+                                password: ''
+                            }}
+                            onSubmit={this.handleSubmit}>
+                            <Control
+                                component={(props) =>
+                                    <TextField
+                                        label="Email"
+                                        {...props}/>
+                                }
+                                model=".email"
+                            />
+                            <Control
+                                component={(props) =>
+                                    <TextField
+                                        label="Username"
+                                        {...props}/>
+                                }
+                                model=".username"
+                            />
+                            <Control
+                                component={(props) =>
+                                    <TextField
+                                        label="Password"
+                                        type="password"
+                                        {...props}/>
+                                }
+                                model=".password"
+                            />
+                            <Flex
+                                align="center"
+                                justify="flex-end"
+                                style={common.formActions}>
+                                <Button
+                                    label="Register"
+                                    type="submit"/>
+                            </Flex>
+                        </LocalForm>
                     </div>
                 </Container>
                 <HelpMessage
@@ -68,4 +79,16 @@ class Register extends Component {
     }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticating: state.auth.isAuthenticating
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        register: (creds) => dispatch(register(creds))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

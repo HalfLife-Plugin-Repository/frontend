@@ -2,6 +2,7 @@ import React from 'react';
 import Radium from 'radium';
 import MdSearch from 'react-icons/lib/md/search';
 import Flex from 'components/Flex';
+import phrases from 'lang';
 import {common, blue500, blue700, grey600, white} from 'styles';
 
 const style = {
@@ -58,10 +59,13 @@ const Search = (props) => (
                 common.white,
                 common.center
             ]}>
-                The Simplest Way to find Half Life Plugins
+                {phrases.home_search}
             </h2>
             <div style={style.wrapper}>
-                <input style={[common.borderBox, style.input]} type="text" placeholder="Search"/>
+                <input
+                    placeholder={phrases.home_search_placeholder}
+                    style={[common.borderBox, style.input]}
+                    type="text"/>
                 <button style={style.button}>
                     <MdSearch style={style.icon}/>
                 </button>

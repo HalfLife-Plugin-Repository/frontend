@@ -7,6 +7,7 @@ import MdArrowDropDown from 'react-icons/lib/md/arrow-drop-down';
 import MdArrowDropUp from 'react-icons/lib/md/arrow-drop-up';
 import Avatar from 'components/Avatar';
 import Menu, {MenuItem} from 'components/Menu';
+import phrases from 'lang';
 import {common, blue600, blue700} from 'styles';
 
 const style = {
@@ -33,6 +34,10 @@ const style = {
         marginRight: 15,
         verticalAlign: 'middle'
     }
+};
+
+const truncateUserName = (username) => {
+    return (username.length < 15) ? username : `${username.substr(0, 15)}...`
 };
 
 class Logged extends Component{
@@ -66,7 +71,7 @@ class Logged extends Component{
                     style.container,
                     (menuOpen && style.opened)
                 ]}>
-                <span style={style.salutations}>Greetings, {username}</span>
+                <span style={style.salutations}>{phrases.header_salutations}, {truncateUserName(username)}</span>
                 <Avatar
                     alt={username}
                     size={36}
@@ -79,14 +84,20 @@ class Logged extends Component{
                     <MenuItem
                         hoverStyle={style.menuItemHoverStyle}>
                         <Link to={`/user/${id}`}>
-                            Profile
+                            {phrases.header_profile}
+                        </Link>
+                    </MenuItem>
+                    <MenuItem
+                        hoverStyle={style.menuItemHoverStyle}>
+                        <Link to={`/settings`}>
+                            {phrases.header_settings}
                         </Link>
                     </MenuItem>
                     <MenuItem
                         hoverStyle={style.menuItemHoverStyle}
                         onClick={logOut}>
                         <span>
-                            Log Out
+                            {phrases.header_logout}
                         </span>
                     </MenuItem>
                 </Menu>
@@ -96,17 +107,7 @@ class Logged extends Component{
 }
 
 const mapStateToProps = (state) => {
-    const {
-        auth: {
-            currentUser:{
-                user_id
-            }
-        },
-        entities: {
-            users
-        }
-    } = state;
-    const user = users[user_id];
+    const user = state.entities.users[state.auth.currentUser.user_id];
     return {
         user
     }

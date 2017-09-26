@@ -42,7 +42,7 @@ class TextField extends Component {
     };
 
     onChange = (e) => {
-        this.props.onChange(this.props.name, e.target.value);
+        this.props.onChange(e);
     };
 
     render(){

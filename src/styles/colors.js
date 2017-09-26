@@ -15,6 +15,11 @@ export const grey900 = "#212121";
 export const white = "#FFFFFF";
 
 /* Allied Modders Colors */
+export const amBlue = '#1578d3';
 export const amOrange = '#F59D38';
 export const smBlue = '#5694CB';
 export const mmRed = '#FE0000';
+
+/* Social Media */
+export const github = '#24292e';
+export const twitter = '#00b6f1';

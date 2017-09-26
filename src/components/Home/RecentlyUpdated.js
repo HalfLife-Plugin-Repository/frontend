@@ -4,6 +4,7 @@ import {getRecentlyUpdated} from 'actions/plugins';
 import Flex from 'components/Flex';
 import PluginList from 'components/PluginList';
 import Spinner from 'components/Spinner';
+import phrases from 'lang';
 import {common, grey100} from 'styles';
 import homeStyle from './style';
 
@@ -46,7 +47,7 @@ class RecentlyUpdated extends Component {
                 ]}>
                 <div style={common.content}>
                     <h3 style={common.grey900}>
-                        Recently Updated
+                        {phrases.home_recently_updated}
                     </h3>
                     {content}
                 </div>

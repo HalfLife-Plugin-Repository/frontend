@@ -12,11 +12,13 @@ export default function(state={
 }, action){
     switch(action.type){
         case constants.LOGIN_REQUEST:
+        case constants.REGISTER_REQUEST:
         case constants.VERIFY_TOKEN_REQUEST:
             return Object.assign({}, state, {
                 isAuthenticating: true
             });
         case constants.LOGIN_SUCCESS:
+        case constants.REGISTER_SUCCESS:
         case constants.VERIFY_TOKEN_SUCCESS:
             return Object.assign({}, state, {
                 isAuthenticating: false,
@@ -24,6 +26,7 @@ export default function(state={
                 currentUser: action.payload.currentUser
             });
         case constants.LOGIN_FAILURE:
+        case constants.REGISTER_FAILURE:
         case constants.VERIFY_TOKEN_FAILURE:
             return Object.assign({}, state, {
                 isAuthenticating: false

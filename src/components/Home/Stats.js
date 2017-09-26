@@ -7,6 +7,7 @@ import MdFileDownload from 'react-icons/lib/md/file-download';
 import Flex from 'components/Flex';
 import Spinner from 'components/Spinner';
 import Stat from './Stat';
+import phrases from 'lang';
 import {common, blue500, white} from 'styles';
 import homeStyle from './style';
 
@@ -39,15 +40,15 @@ class Stats extends Component {
                     <Stat
                         count={data.plugin_count}
                         icon={<MdApps size={48} style={common.white}/>}
-                        stat="Plugins"/>
+                        stat={phrases.home_stats_plugins}/>
                     <Stat
                         count={data.authors_count}
                         icon={<MdPeople size={48} style={common.white}/>}
-                        stat="Authors"/>
+                        stat={phrases.home_stats_authors}/>
                     <Stat
                         count={0}
                         icon={<MdFileDownload size={48} style={common.white}/>}
-                        stat="Downloads"/>
+                        stat={phrases.home_stats_downloads}/>
                 </Flex>
             );
         }
@@ -61,7 +62,7 @@ class Stats extends Component {
                 ]}>
                 <div style={common.content}>
                     <h3 style={common.grey900}>
-                        Stats
+                        {phrases.home_stats}
                     </h3>
                     {stats}
                 </div>

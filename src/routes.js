@@ -5,6 +5,7 @@ import App from './components/App';
 import Auth, {ForgotPassword, Login, Register} from './components/Auth';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Settings from './components/Settings';
 
 export default (
     <Route path="/" component={App}>
@@ -14,6 +15,7 @@ export default (
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
         </Route>
+        <Route path="/settings" component={Settings}/>
         <Route path="/user/:id" component={Profile}/>
     </Route>
 );

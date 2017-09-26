@@ -5,6 +5,7 @@ import {common, white} from 'styles';
 
 const style = {
     container: {
+        position: 'relative',
         backgroundColor: white,
         borderRadius: 5,
         marginTop: 20,

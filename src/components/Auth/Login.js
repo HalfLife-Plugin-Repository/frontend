@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {logIn} from '../../actions/auth';
+import {logIn} from 'actions/auth';
+import {LocalForm, Control} from 'react-redux-form';
 import Button from 'components/Button';
 import CheckBox from 'components/CheckBox';
 import Container from 'components/Container';
@@ -25,70 +26,62 @@ const style = {
 };
 
 class Login extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            username: '',
-            password: '',
-            rememberMe: false
-        };
-    }
-
-    logIn = () => {
-        this.props.logIn(this.state);
-    };
-
-    handleChange = (name, value) => {
-        this.setState({
-            [name]: value
-        });
+    handleSubmit = (values) => {
+        this.props.logIn(values);
     };
 
     render(){
-        const {
-            username,
-            password,
-            rememberMe
-        } = this.state;
         return (
             <div>
                 <Container
                     header="Login"
                     style={style.container}>
                     <div style={common.form}>
-                        <TextField
-                            label="Username"
-                            name="username"
-                            onChange={this.handleChange}
-                            value={username}/>
-                        <TextField
-                            label="Password"
-                            name="password"
-                            onChange={this.handleChange}
-                            type="password"
-                            value={password}/>
-                        <Flex
-                            align="center"
-                            justify="space-between"
-                            style={common.formActions}>
-                            <CheckBox
-                                checked={rememberMe}
-                                label="Remember Me"
-                                name="rememberMe"
-                                onChange={this.handleChange}/>
-                            <Button
-                                label="Login"
-                                onClick={this.logIn}/>
-                        </Flex>
-                        <Divider style={style.divider}/>
-                        <StyledLink
-                            to="/forgot-password"
-                            style={[
-                                common.grey500,
-                                style.link
-                            ]}>
-                            Forgot Password?
-                        </StyledLink>
+                        <LocalForm
+                            initialState={{
+                                username: '',
+                                password: ''
+                            }}
+                            onSubmit={this.handleSubmit}>
+                            <Control
+                                component={(props) =>
+                                    <TextField
+                                        label="Username"
+                                        {...props}/>
+                                }
+                                model=".username"
+                            />
+                            <Control
+                                component={(props) =>
+                                    <TextField
+                                        label="Password"
+                                        type="password"
+                                        {...props}/>
+                                }
+                                model=".password"
+                            />
+                            <Flex
+                                align="center"
+                                justify="space-between"
+                                style={common.formActions}>
+                                <CheckBox
+                                    checked={true}
+                                    label="Remember Me"
+                                    name="rememberMe"/>
+                                <Button
+                                    label="Login"
+                                    type="submit"/>
+                            </Flex>
+                            <Divider style={style.divider}/>
+                            <StyledLink
+                                to="/forgot-password"
+                                style={[
+                                    common.grey500,
+                                    style.link
+                                ]}>
+                                Forgot Password?
+                            </StyledLink>
+                        </LocalForm>
                     </div>
                 </Container>
                 <HelpMessage

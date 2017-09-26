@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {loadUser} from 'actions/users'
+import {loadUser} from 'actions/users';
 import Avatar from 'components/Avatar';
 import Container from 'components/Container';
 import Flex from 'components/Flex';
 import Spinner from 'components/Spinner';
+import Links from './Links';
 import {common, grey100} from 'styles';
 
 const style = {
@@ -13,7 +14,8 @@ const style = {
         width: '100%',
         minHeight: 'calc(100vh - 97px)',
         height: 'auto',
-        backgroundColor: grey100
+        backgroundColor: grey100,
+        paddingBottom: 40
     },
     profile: {
         width: 960,
@@ -41,10 +43,7 @@ class Profile extends Component {
             content = <Spinner/>;
         } else {
             content = (
-                <Flex
-                    column={true}
-                    align="center"
-                    style={style.container}>
+                <div>
                     <Container style={style.profile}>
                         <Avatar
                             circular={false}
@@ -53,18 +52,29 @@ class Profile extends Component {
                         <h4 style={Object.assign({}, common.grey600, style.username)}>
                             {user.username}
                         </h4>
+                        <Links
+                            alliedmodders={user.alliedmodders}
+                            github={user.github}
+                            twitter={user.twitter}/>
                     </Container>
                     <Container
                         header="Plugins"
                         style={style.plugins}>
 
                     </Container>
-                </Flex>
+                </div>
             );
         }
         return (
             <div>
-                {content}
+                <Flex
+                    justify="center"
+                    style={[
+                        common.borderBox,
+                        style.container
+                    ]}>
+                    {content}
+                </Flex>
             </div>
         )
     }

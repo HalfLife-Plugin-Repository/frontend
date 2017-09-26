@@ -38,20 +38,23 @@ const Button = (props) => (
         style={[
             common.white,
             style.base,
-            props.filled ? style.filled : style.unfilled]}>
+            props.filled ? style.filled : style.unfilled]}
+        type={props.type}>
         {props.label}
     </button>
 );
 
 Button.defaultProps = {
     filled: true,
-    onClick: () => {}
+    onClick: () => {},
+    type: 'button'
 };
 
 Button.propTypes = {
     filled: PropTypes.bool,
     label: PropTypes.string.isRequired,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    type: PropTypes.string
 };
 
 export default Radium(Button);
