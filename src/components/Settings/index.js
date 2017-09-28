@@ -5,7 +5,9 @@ import Container from 'components/Container';
 import Flex from 'components/Flex';
 import Spinner from 'components/Spinner';
 import ChangePassword from './ChangePassword';
+import LanguageSettings from './LanguageSettings';
 import ProfileSettings from './ProfileSettings';
+import phrases from 'lang';
 import {common, grey100} from 'styles';
 
 const style = {
@@ -33,17 +35,17 @@ class Settings extends Component {
             content = (
                 <div>
                     <Container
-                        header="General"
+                        header={phrases.general}
                         style={style.settings}>
                         <ProfileSettings/>
                     </Container>
                     <Container
-                        header="Language"
+                        header={phrases.language}
                         style={style.settings}>
-
+                        <LanguageSettings/>
                     </Container>
                     <Container
-                        header="Change Password"
+                        header={phrases.change_password}
                         style={style.settings}>
                         <ChangePassword/>
                     </Container>

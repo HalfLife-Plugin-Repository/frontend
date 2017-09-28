@@ -12,7 +12,7 @@ import {userSchema} from 'schemas';
 /**
  * Fetches a user by its id
  */
-function fetchUser(id){
+export function fetchUser(id){
     return {
         [CALL_API]: {
             endpoint: `${API_URL}/user/accounts/${id}/`,
@@ -28,18 +28,5 @@ function fetchUser(id){
                 constants.FETCH_USER_FAILURE
             ]
         }
-    }
-}
-
-/**
- * Fetches a user by its id, unless it's cached.
- */
-export function loadUser(id, requiredFields=[]){
-    return (dispatch, getState) => {
-        const user = getState().entities.users[id];
-        if(user && requiredFields.every(key => user.hasOwnProperty(key))){
-            return null;
-        }
-        return dispatch(fetchUser(id));
     }
 }

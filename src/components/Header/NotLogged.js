@@ -2,6 +2,7 @@ import React from 'react';
 import browserHistory from 'react-router/lib/browserHistory';
 import Link from 'react-router/lib/Link';
 import Button from 'components/Button';
+import phrases from 'lang';
 import {common} from 'styles';
 
 const style = {
@@ -20,11 +21,11 @@ const NotLogged = (props) => (
                 common.strong,
                 style.login
             )}>
-            Login
+            {phrases.login}
         </Link>
         <Button
             onClick={() => browserHistory.push('/register')}
-            label="Register"
+            label={phrases.register}
             filled={false}/>
     </div>
 );

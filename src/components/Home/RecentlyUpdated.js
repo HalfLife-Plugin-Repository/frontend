@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getRecentlyUpdated} from 'actions/plugins';
+import {loadRecentlyUpdated} from 'actions/plugins';
 import Flex from 'components/Flex';
 import PluginList from 'components/PluginList';
 import Spinner from 'components/Spinner';
@@ -19,7 +19,7 @@ const style = {
 
 class RecentlyUpdated extends Component {
     componentWillMount(){
-        this.props.getRecentlyUpdated();
+        this.props.loadRecentlyUpdated();
     }
 
     render(){
@@ -47,7 +47,7 @@ class RecentlyUpdated extends Component {
                 ]}>
                 <div style={common.content}>
                     <h3 style={common.grey900}>
-                        {phrases.home_recently_updated}
+                        {phrases.recently_updated}
                     </h3>
                     {content}
                 </div>
@@ -61,23 +61,23 @@ const mapStateToProps = (state) => {
         entities: {
             plugins
         },
-        recently_updated: {
+        visible_plugins: {
             ids,
             isFetching
         }
     } = state;
 
-    const recentlyUpdatedPlugins = (ids || []).map((id) => plugins[id]);
+    const visiblePlugins = (ids || []).map((id) => plugins[id]);
 
     return {
         isFetching,
-        plugins: recentlyUpdatedPlugins
+        plugins: visiblePlugins
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getRecentlyUpdated: () => dispatch(getRecentlyUpdated())
+        loadRecentlyUpdated: () => dispatch(loadRecentlyUpdated())
     }
 };
 

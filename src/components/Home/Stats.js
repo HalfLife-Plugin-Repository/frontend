@@ -40,15 +40,15 @@ class Stats extends Component {
                     <Stat
                         count={data.plugin_count}
                         icon={<MdApps size={48} style={common.white}/>}
-                        stat={phrases.home_stats_plugins}/>
+                        stat={phrases.plugins}/>
                     <Stat
                         count={data.authors_count}
                         icon={<MdPeople size={48} style={common.white}/>}
-                        stat={phrases.home_stats_authors}/>
+                        stat={phrases.authors}/>
                     <Stat
                         count={0}
                         icon={<MdFileDownload size={48} style={common.white}/>}
-                        stat={phrases.home_stats_downloads}/>
+                        stat={phrases.downloads}/>
                 </Flex>
             );
         }
@@ -62,7 +62,7 @@ class Stats extends Component {
                 ]}>
                 <div style={common.content}>
                     <h3 style={common.grey900}>
-                        {phrases.home_stats}
+                        {phrases.stats}
                     </h3>
                     {stats}
                 </div>

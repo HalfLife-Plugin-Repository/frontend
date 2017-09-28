@@ -10,6 +10,8 @@ import Flex from 'components/Flex';
 import StyledLink from 'components/StyledLink';
 import TextField from 'components/TextField';
 import HelpMessage from './HelpMessage';
+import phrases from 'lang';
+import {required, REQUIRED_TEXT} from 'utils/validation';
 import {animations, common} from 'styles';
 
 const style = {
@@ -34,7 +36,7 @@ class Login extends Component {
         return (
             <div>
                 <Container
-                    header="Login"
+                    header={phrases.login}
                     style={style.container}>
                     <div style={common.form}>
                         <LocalForm
@@ -46,19 +48,38 @@ class Login extends Component {
                             <Control
                                 component={(props) =>
                                     <TextField
-                                        label="Username"
+                                        label={phrases.username}
+                                        error="Test"
                                         {...props}/>
                                 }
+                                mapProps={{
+                                    error: ({fieldValue: {errors, touched}}) => {
+                                        if(touched && errors.required){
+                                            return phrases.validation_required;
+                                        }
+                                        return null;
+                                    }
+                                }}
                                 model=".username"
+                                validators={{required}}
                             />
                             <Control
                                 component={(props) =>
                                     <TextField
-                                        label="Password"
+                                        label={phrases.password}
                                         type="password"
                                         {...props}/>
                                 }
+                                mapProps={{
+                                    error: ({fieldValue: {errors, touched}}) => {
+                                        if(touched && errors.required){
+                                            return phrases.validation_required;
+                                        }
+                                        return null;
+                                    }
+                                }}
                                 model=".password"
+                                validators={{required}}
                             />
                             <Flex
                                 align="center"
@@ -66,10 +87,10 @@ class Login extends Component {
                                 style={common.formActions}>
                                 <CheckBox
                                     checked={true}
-                                    label="Remember Me"
+                                    label={phrases.remember_me}
                                     name="rememberMe"/>
                                 <Button
-                                    label="Login"
+                                    label={phrases.login}
                                     type="submit"/>
                             </Flex>
                             <Divider style={style.divider}/>
@@ -79,15 +100,15 @@ class Login extends Component {
                                     common.grey500,
                                     style.link
                                 ]}>
-                                Forgot Password?
+                                {phrases.forgot_password_q}
                             </StyledLink>
                         </LocalForm>
                     </div>
                 </Container>
                 <HelpMessage
-                    action="Register Now"
+                    action={phrases.register_now}
                     actionTo="/register"
-                    question="Don't have an account?"/>
+                    question={phrases.login_question}/>
             </div>
         )
     }

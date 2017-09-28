@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Link from 'react-router/lib/Link';
 import Divider from 'components/Divider';
 import {AMXModX, MetaMod, SourceMod} from 'components/Tags';
+import phrases from 'lang';
 import {common, blue500, blue700, grey300} from 'styles';
 
 const style = {
@@ -68,7 +69,7 @@ const Plugin = (props) => (
                 common.grey500,
                 style.last_updated
             ]}>
-                Last Updated {formatDate(props.plugin.last_updated)}
+                {phrases.last_updated}&nbsp;{formatDate(props.plugin.last_updated)}
             </span>
         </div>
         {props.showDivider &&

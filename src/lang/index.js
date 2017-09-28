@@ -1,10 +1,11 @@
-const langs = [
+export const languages = [
     {
         value: 'en',
+        option: 'English',
         data: require('./en.json')
     }
 ];
 
-const storedLang = localStorage.getItem('localization');
-const lang = ((storedLang && langs.find((v) => v.value === storedLang)) || langs[0]).data;
-export default lang;
+const language = localStorage.getItem('localization');
+const phrases = ((language && languages.find((v) => v.value === language)) || languages[0]).data;
+export default phrases;

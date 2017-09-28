@@ -10,10 +10,13 @@
   "author": "Zach Perkitny",
   "license": "ISC",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "lodash.merge": "^4.6.0",
     "moment": "^2.18.1",
     "normalizr": "^3.2.3",
+    "printf": "^0.2.5",
+    "query-string": "^5.0.0",
     "radium": "^0.19.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

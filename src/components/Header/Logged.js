@@ -1,3 +1,4 @@
+import printf from 'printf';
 import React, {Component} from 'react';
 import Radium from 'radium';
 import {connect} from 'react-redux';
@@ -71,7 +72,7 @@ class Logged extends Component{
                     style.container,
                     (menuOpen && style.opened)
                 ]}>
-                <span style={style.salutations}>{phrases.header_salutations}, {truncateUserName(username)}</span>
+                <span style={style.salutations}>{printf(phrases.greetings, username)}</span>
                 <Avatar
                     alt={username}
                     size={36}
@@ -84,20 +85,20 @@ class Logged extends Component{
                     <MenuItem
                         hoverStyle={style.menuItemHoverStyle}>
                         <Link to={`/user/${id}`}>
-                            {phrases.header_profile}
+                            {phrases.profile}
                         </Link>
                     </MenuItem>
                     <MenuItem
                         hoverStyle={style.menuItemHoverStyle}>
                         <Link to={`/settings`}>
-                            {phrases.header_settings}
+                            {phrases.settings}
                         </Link>
                     </MenuItem>
                     <MenuItem
                         hoverStyle={style.menuItemHoverStyle}
                         onClick={logOut}>
                         <span>
-                            {phrases.header_logout}
+                            {phrases.log_out}
                         </span>
                     </MenuItem>
                 </Menu>

@@ -8,7 +8,8 @@ const style = {
     container: {
         position: 'absolute',
         bottom: 20,
-        right: 20
+        right: 20,
+        paddingBottom: '0.33em'
     },
     link: {
         marginLeft: 7.5

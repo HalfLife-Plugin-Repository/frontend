@@ -1,3 +1,4 @@
+import printf from 'printf';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {updateProfile} from 'actions/auth';
@@ -5,6 +6,8 @@ import {LocalForm, Control} from 'react-redux-form';
 import Button from 'components/Button';
 import Flex from 'components/Flex';
 import TextField from 'components/TextField';
+import phrases from 'lang';
+import {maxLength} from 'utils/validation';
 import {common} from 'styles';
 
 class ProfileSettings extends Component {
@@ -31,18 +34,40 @@ class ProfileSettings extends Component {
                     <Control
                         component={(props) =>
                             <TextField
-                                label="First Name"
+                                label={phrases.first_name}
                                 {...props}/>
                         }
+                        mapProps={{
+                            error: ({fieldValue: {errors, touched}}) => {
+                                if(touched && errors.maxLength){
+                                    return printf(phrases.validation_max_length, 30);
+                                }
+                                return null;
+                            }
+                        }}
                         model=".first_name"
+                        validators={{
+                            maxLength: maxLength(30)
+                        }}
                     />
                     <Control
                         component={(props) =>
                             <TextField
-                                label="Last Name"
+                                label={phrases.last_name}
                                 {...props}/>
                         }
+                        mapProps={{
+                            error: ({fieldValue: {errors, touched}}) => {
+                                if(touched && errors.maxLength){
+                                    return printf(phrases.validation_max_length, 150);
+                                }
+                                return null;
+                            }
+                        }}
                         model=".last_name"
+                        validators={{
+                            maxLength: maxLength(150)
+                        }}
                     />
                     <Control
                         component={(props) =>
@@ -50,7 +75,18 @@ class ProfileSettings extends Component {
                                 label="Alliedmodders"
                                 {...props}/>
                         }
+                        mapProps={{
+                            error: ({fieldValue: {errors, touched}}) => {
+                                if(touched && errors.maxLength){
+                                    return printf(phrases.validation_max_length, 25);
+                                }
+                                return null;
+                            }
+                        }}
                         model=".alliedmodders"
+                        validators={{
+                            maxLength: maxLength(25)
+                        }}
                     />
                     <Control
                         component={(props) =>
@@ -58,7 +94,18 @@ class ProfileSettings extends Component {
                                 label="Github"
                                 {...props}/>
                         }
+                        mapProps={{
+                            error: ({fieldValue: {errors, touched}}) => {
+                                if(touched && errors.maxLength){
+                                    return printf(phrases.validation_max_length, 39);
+                                }
+                                return null;
+                            }
+                        }}
                         model=".github"
+                        validators={{
+                            maxLength: maxLength(39)
+                        }}
                     />
                     <Control
                         component={(props) =>
@@ -66,7 +113,18 @@ class ProfileSettings extends Component {
                                 label="Twitter"
                                 {...props}/>
                         }
+                        mapProps={{
+                            error: ({fieldValue: {errors, touched}}) => {
+                                if(touched && errors.maxLength){
+                                    return printf(phrases.validation_max_length, 15);
+                                }
+                                return null;
+                            }
+                        }}
                         model=".twitter"
+                        validators={{
+                            maxLength: maxLength(15)
+                        }}
                     />
                     <Flex
                         align="center"

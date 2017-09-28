@@ -5,6 +5,8 @@ import {LocalForm, Control} from 'react-redux-form';
 import Button from 'components/Button';
 import Flex from 'components/Flex';
 import TextField from 'components/TextField';
+import phrases from 'lang';
+import {required} from 'utils/validation';
 import {common} from 'styles';
 
 class ChangePassword extends Component {
@@ -24,27 +26,45 @@ class ChangePassword extends Component {
                     <Control
                         component={(props) =>
                             <TextField
-                                label="Old Password"
+                                label={phrases.old_password}
                                 type="password"
                                 {...props}/>
                         }
+                        mapProps={{
+                            error: ({fieldValue: {errors, touched}}) => {
+                                if(touched && errors.required){
+                                    return phrases.validation_required;
+                                }
+                                return null;
+                            }
+                        }}
                         model=".old_password"
+                        validators={{required}}
                     />
                     <Control
                         component={(props) =>
                             <TextField
-                                label="New Password"
+                                label={phrases.new_password}
                                 type="password"
                                 {...props}/>
                         }
+                        mapProps={{
+                            error: ({fieldValue: {errors, touched}}) => {
+                                if(touched && errors.required){
+                                    return phrases.validation_required;
+                                }
+                                return null;
+                            }
+                        }}
                         model=".new_password"
+                        validators={{required}}
                     />
                     <Flex
                         align="center"
                         justify="flex-end"
                         style={common.formActions}>
                         <Button
-                            label="Change"
+                            label={phrases.change}
                             type="submit"/>
                     </Flex>
                 </LocalForm>

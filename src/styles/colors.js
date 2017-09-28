@@ -12,6 +12,7 @@ export const grey500 = "#9E9E9E";
 export const grey600 = "#757575";
 export const grey700 = "#616161";
 export const grey900 = "#212121";
+export const red500 = '#F44336';
 export const white = "#FFFFFF";
 
 /* Allied Modders Colors */

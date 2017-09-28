@@ -59,11 +59,11 @@ const Search = (props) => (
                 common.white,
                 common.center
             ]}>
-                {phrases.home_search}
+                {phrases.home_banner}
             </h2>
             <div style={style.wrapper}>
                 <input
-                    placeholder={phrases.home_search_placeholder}
+                    placeholder={phrases.search}
                     style={[common.borderBox, style.input]}
                     type="text"/>
                 <button style={style.button}>
