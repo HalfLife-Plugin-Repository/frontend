@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Radium from 'radium';
 import {common, blue500, blue700, white} from 'styles';
 
@@ -38,9 +39,12 @@ const Button = (props) => (
         style={[
             common.white,
             style.base,
-            props.filled ? style.filled : style.unfilled]}
+            props.filled ? style.filled : style.unfilled,
+            props.style
+        ]}
         type={props.type}>
         {props.label}
+        {props.children}
     </button>
 );
 
@@ -54,7 +58,8 @@ Button.propTypes = {
     filled: PropTypes.bool,
     label: PropTypes.string.isRequired,
     onClick: PropTypes.func,
-    type: PropTypes.string
+    type: PropTypes.string,
+    style: PropTypes.object
 };
 
 export default Radium(Button);

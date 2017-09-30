@@ -9,7 +9,7 @@ import * as constants from 'constants/stats';
 /**
  * Fetches plugin stats
  */
-function fetchStats(){
+export default function(){
     return {
         [CALL_API]: {
             endpoint: `${API_URL}/plugins/stats/`,
@@ -20,18 +20,5 @@ function fetchStats(){
                 constants.FETCH_STATS_FAILURE
             ]
         }
-    }
-}
-
-/**
- * Fetches plugin stats unless its cached.
- */
-export default function(){
-    return (dispatch, getState) => {
-        const data = getState().stats.data;
-        if(data){
-            return null;
-        }
-        return dispatch(fetchStats());
     }
 }

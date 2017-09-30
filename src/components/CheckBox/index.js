@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import MdCheck from 'react-icons/lib/md/check';
 import Flex from 'components/Flex';
 import {common, blue500, grey200, white} from 'styles';

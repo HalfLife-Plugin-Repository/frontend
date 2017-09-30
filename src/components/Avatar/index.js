@@ -1,18 +1,17 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const getStyle = (props) => {
-    const {circular, size} = props;
-    const style = {
+    const {circular, size, style: propStyle} = props;
+    return {
         avatar: {
             verticalAlign: 'middle',
             height: size,
-            width: size
+            width: size,
+            borderRadius: (circular) ? '50%' : '10%',
+            ...propStyle
         }
-    };
-    if(circular){
-        style.avatar.borderRadius = '50%';
     }
-    return style;
 };
 
 const Avatar = (props) => {
@@ -34,7 +33,8 @@ Avatar.propTypes = {
     alt: PropTypes.string,
     circular: PropTypes.bool,
     size: PropTypes.number,
-    src: PropTypes.string.isRequired
+    src: PropTypes.string.isRequired,
+    style: PropTypes.object
 };
 
 export default Avatar;

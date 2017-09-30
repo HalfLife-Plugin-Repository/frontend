@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Radium from 'radium';
 import Flex from 'components/Flex';
 import {common, grey200, grey300, grey500, grey600, red500} from 'styles';

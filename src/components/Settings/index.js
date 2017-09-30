@@ -4,6 +4,7 @@ import {loadUser} from 'actions/users';
 import Container from 'components/Container';
 import Flex from 'components/Flex';
 import Spinner from 'components/Spinner';
+import AvatarSettings from './AvatarSettings';
 import ChangePassword from './ChangePassword';
 import LanguageSettings from './LanguageSettings';
 import ProfileSettings from './ProfileSettings';
@@ -11,13 +12,6 @@ import phrases from 'lang';
 import {common, grey100} from 'styles';
 
 const style = {
-    container: {
-        width: '100%',
-        minHeight: 'calc(100vh - 97px)',
-        height: 'auto',
-        backgroundColor: grey100,
-        paddingBottom: 40
-    },
     settings: {
         width: 960
     }
@@ -32,37 +26,43 @@ class Settings extends Component {
         if(isAuthenticating){
             content = <Spinner/>;
         } else {
-            content = (
-                <div>
-                    <Container
-                        header={phrases.general}
-                        style={style.settings}>
-                        <ProfileSettings/>
-                    </Container>
-                    <Container
-                        header={phrases.language}
-                        style={style.settings}>
-                        <LanguageSettings/>
-                    </Container>
-                    <Container
-                        header={phrases.change_password}
-                        style={style.settings}>
-                        <ChangePassword/>
-                    </Container>
-                </div>
-            );
+            content = [
+                <Container
+                    header="Avatar"
+                    key={0}
+                    style={style.settings}>
+                    <AvatarSettings/>
+                </Container>,
+                <Container
+                    header={phrases.general}
+                    key={1}
+                    style={style.settings}>
+                    <ProfileSettings/>
+                </Container>,
+                <Container
+                    header={phrases.language}
+                    key={2}
+                    style={style.settings}>
+                    <LanguageSettings/>
+                </Container>,
+                <Container
+                    header={phrases.change_password}
+                    key={3}
+                    style={style.settings}>
+                    <ChangePassword/>
+                </Container>
+        ];
         }
         return (
-            <div>
-                <Flex
-                    justify="center"
-                    style={[
-                        common.borderBox,
-                        style.container
-                    ]}>
-                    {content}
-                </Flex>
-            </div>
+            <Flex
+                align="center"
+                column={true}
+                style={[
+                    common.borderBox,
+                    common.container
+                ]}>
+                {content}
+            </Flex>
         )
     }
 }

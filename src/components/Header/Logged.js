@@ -76,7 +76,7 @@ class Logged extends Component{
                 <Avatar
                     alt={username}
                     size={36}
-                    src="https://www.gravatar.com/avatar/94d093eda664addd6e450d7e9881bcad?s=36&d=identicon&r=PG"/>
+                    src={avatar}/>
                 {menuOpen && <MdArrowDropUp size={24}/>}
                 {!menuOpen && <MdArrowDropDown size={24}/>}
                 <Menu

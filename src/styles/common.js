@@ -15,6 +15,14 @@ const common = {
             width: 960
         }
     },
+    container: {
+        position: 'relative',
+        width: '100%',
+        minHeight: 'calc(100vh - 97px)',
+        height: 'auto',
+        backgroundColor: colors.grey100,
+        paddingBottom: 40
+    },
     hGradient: {
         backgroundImage: `linear-gradient(to right, ${colors.blue500}, ${colors.blue700})`
     },

@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Divider from 'components/Divider';
 
 import {common, white} from 'styles';
@@ -27,7 +28,7 @@ const Container = (props) => (
         {props.header &&
             <div>
                 <h4 style={Object.assign({},
-                    common.grey600,
+                    common.grey700,
                     style.header
                 )}>
                     {props.header}

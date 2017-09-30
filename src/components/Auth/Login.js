@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {logIn} from 'actions/auth';
 import {LocalForm, Control} from 'react-redux-form';
-import Button from 'components/Button';
-import CheckBox from 'components/CheckBox';
+import Button from 'components/Button';;
 import Container from 'components/Container';
 import Divider from 'components/Divider';
 import Flex from 'components/Flex';
@@ -83,12 +82,8 @@ class Login extends Component {
                             />
                             <Flex
                                 align="center"
-                                justify="space-between"
+                                justify="flex-end"
                                 style={common.formActions}>
-                                <CheckBox
-                                    checked={true}
-                                    label={phrases.remember_me}
-                                    name="rememberMe"/>
                                 <Button
                                     label={phrases.login}
                                     type="submit"/>

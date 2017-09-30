@@ -9,17 +9,9 @@ import PluginList from 'components/PluginList';
 import Spinner from 'components/Spinner';
 import Links from './Links';
 import phrases from 'lang';
-import {common, grey100} from 'styles';
+import {common} from 'styles';
 
 const style = {
-    container: {
-        position: 'relative',
-        width: '100%',
-        minHeight: 'calc(100vh - 97px)',
-        height: 'auto',
-        backgroundColor: grey100,
-        paddingBottom: 40
-    },
     profile: {
         width: 960,
         textAlign: 'center'
@@ -38,7 +30,7 @@ const style = {
 
 class Profile extends Component {
     componentWillMount(){
-        const id = this.props.id;
+        const id = this.props.params.id;
         this.props.fetchUser(id);
         this.props.loadPlugins({user: id});
     }
@@ -54,47 +46,47 @@ class Profile extends Component {
         if(!user || isFetching){
             content = <Spinner/>;
         } else {
-            content = (
-                <div>
-                    <Container style={style.profile}>
-                        <Avatar
-                            circular={false}
-                            size={150}
-                            src="https://www.gravatar.com/avatar/94d093eda664addd6e450d7e9881bcad?s=150&d=identicon&r=PG"/>
-                        <h4 style={Object.assign({}, common.grey600, style.username)}>
-                            {user.username}
-                        </h4>
-                        {count &&
-                        <h5 style={common.grey500}>
-                            {count}&nbsp;{(count === 1) ? phrases.plugin : phrases.plugins}
-                        </h5>
-                        }
-                        <Links
-                            alliedmodders={user.alliedmodders}
-                            github={user.github}
-                            twitter={user.twitter}/>
-                    </Container>
-                    <Container
-                        header={phrases.plugins}
-                        style={style.plugins}>
-                        <div style={style.pluginsContent}>
-                            <PluginList plugins={plugins}/>
-                        </div>
-                    </Container>
-                </div>
-            );
+            content = [
+                <Container
+                    key={0}
+                    style={style.profile}>
+                    <Avatar
+                        circular={false}
+                        size={150}
+                        src={user.avatar}/>
+                    <h4 style={Object.assign({}, common.grey600, style.username)}>
+                        {user.username}
+                    </h4>
+                    {count &&
+                    <h5 style={common.grey500}>
+                        {count}&nbsp;{(count === 1) ? phrases.plugin : phrases.plugins}
+                    </h5>
+                    }
+                    <Links
+                        alliedmodders={user.alliedmodders}
+                        github={user.github}
+                        twitter={user.twitter}/>
+                </Container>,
+                <Container
+                    header={phrases.plugins}
+                    key={1}
+                    style={style.plugins}>
+                    <div style={style.pluginsContent}>
+                        <PluginList plugins={plugins}/>
+                    </div>
+                </Container>
+            ];
         }
         return (
-            <div>
-                <Flex
-                    justify="center"
-                    style={[
-                        common.borderBox,
-                        style.container
-                    ]}>
-                    {content}
-                </Flex>
-            </div>
+            <Flex
+                align="center"
+                column={true}
+                style={[
+                    common.borderBox,
+                    common.container
+                ]}>
+                {content}
+            </Flex>
         )
     }
 }
@@ -107,16 +99,15 @@ const mapStateToProps = (state, props) => {
             users
         },
         visible_plugins: {
-            count,
             ids,
             isFetching
         }
     } = state;
     const userPlugins = (ids || []).map((id) => plugins[id]);
+    const count = userPlugins.length;
     const user = users[id];
     return {
         count,
-        id,
         isFetching,
         plugins: userPlugins,
         user

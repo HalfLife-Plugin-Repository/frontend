@@ -29,7 +29,9 @@ class LanguageSettings extends Component {
                     onChange={this.handleChange}
                     value={lang}>
                     {languages.map((language, index) =>
-                        <option value={language.value}>
+                        <option
+                            key={index}
+                            value={language.value}>
                             {language.option}
                         </option>
                     )}
