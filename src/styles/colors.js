@@ -2,6 +2,7 @@
  * @file Project Colors
  */
 
+export const blue100 = '#B3E5FC';
 export const blue500 = "#03A9F4";
 export const blue600 = "#039BE5";
 export const blue700 = "#0288D1";

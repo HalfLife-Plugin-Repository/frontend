@@ -4,8 +4,11 @@
   "description": "Half Life Plugin Repository",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server"
+  },
+  "jest": {
+    "moduleDirectories": ["node_modules", "src"]
   },
   "author": "Zach Perkitny",
   "license": "ISC",
@@ -34,6 +37,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-polyfill": "^6.26.0",
@@ -42,8 +46,11 @@
     "babel-preset-stage-0": "^6.24.1",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
+    "nock": "^9.0.22",
     "react-hot-loader": "^3.0.0-beta.2",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.3.0",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }

@@ -7,7 +7,7 @@ import Divider from 'components/Divider';
 import StyledLink from 'components/StyledLink';
 import {AMXModX, MetaMod, SourceMod} from 'components/Tags';
 import phrases from 'lang';
-import {common, blue500, blue700, grey300, grey700, grey900} from 'styles';
+import {common, blue500, blue700, grey200, grey700, grey900} from 'styles';
 
 const style = {
     container: {
@@ -18,7 +18,7 @@ const style = {
         paddingLeft: 60
     },
     divider: {
-        backgroundColor: grey300,
+        backgroundColor: grey200,
         marginTop: '0.5em'
     },
     last_updated: {

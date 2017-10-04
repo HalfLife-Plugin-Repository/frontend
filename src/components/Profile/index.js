@@ -30,7 +30,17 @@ const style = {
 
 class Profile extends Component {
     componentWillMount(){
-        const id = this.props.params.id;
+        this.loadData(this.props.params.id);
+    }
+
+    componentWillReceiveProps(props){
+        const id = props.params.id;
+        if(id !== this.props.params.id){
+            this.loadData(id);
+        }
+    }
+
+    loadData(id){
         this.props.fetchUser(id);
         this.props.loadPlugins({user: id});
     }
@@ -53,11 +63,11 @@ class Profile extends Component {
                     <Avatar
                         circular={false}
                         size={150}
-                        src={user.avatar}/>
+                        src={`${user.avatar}?d=retro&s=150`}/>
                     <h4 style={Object.assign({}, common.grey600, style.username)}>
                         {user.username}
                     </h4>
-                    {count &&
+                    {!!count &&
                     <h5 style={common.grey500}>
                         {count}&nbsp;{(count === 1) ? phrases.plugin : phrases.plugins}
                     </h5>

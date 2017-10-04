@@ -4,7 +4,6 @@ import {loadUser} from 'actions/users';
 import Container from 'components/Container';
 import Flex from 'components/Flex';
 import Spinner from 'components/Spinner';
-import AvatarSettings from './AvatarSettings';
 import ChangePassword from './ChangePassword';
 import LanguageSettings from './LanguageSettings';
 import ProfileSettings from './ProfileSettings';
@@ -27,12 +26,6 @@ class Settings extends Component {
             content = <Spinner/>;
         } else {
             content = [
-                <Container
-                    header="Avatar"
-                    key={0}
-                    style={style.settings}>
-                    <AvatarSettings/>
-                </Container>,
                 <Container
                     header={phrases.general}
                     key={1}

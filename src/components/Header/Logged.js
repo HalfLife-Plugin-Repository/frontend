@@ -76,7 +76,7 @@ class Logged extends Component{
                 <Avatar
                     alt={username}
                     size={36}
-                    src={avatar}/>
+                    src={`${avatar}?d=retro&s=36`}/>
                 {menuOpen && <MdArrowDropUp size={24}/>}
                 {!menuOpen && <MdArrowDropDown size={24}/>}
                 <Menu

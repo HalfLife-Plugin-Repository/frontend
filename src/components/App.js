@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {verifyToken} from 'actions/auth';
 import {Style, StyleRoot} from 'radium';
+import Footer from './Footer';
 import Header from './Header';
 import root from 'styles';
+
+const authRoutes = ['/login', '/register', '/forgot-password'];
 
 class App extends Component {
     componentWillMount(){
@@ -17,14 +20,18 @@ class App extends Component {
                 pathname
             }
         } = this.props;
+        const notAuthRoute = authRoutes.indexOf(pathname) === -1;
         return (
             <StyleRoot>
                 <div>
                     <Style rules={root}/>
-                    {['/login', '/register', '/forgot-password'].indexOf(pathname) === -1 &&
+                    {notAuthRoute &&
                     <Header opaque={pathname !== '/'}/>
                     }
                     {children}
+                    {notAuthRoute &&
+                    <Footer/>
+                    }
                 </div>
             </StyleRoot>
         );

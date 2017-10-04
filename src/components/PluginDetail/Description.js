@@ -52,7 +52,7 @@ const rules = {
         marginTop: '0.25em'
     },
     p: {
-        marginBottom: 16
+        margin: '16px 0'
     },
     a: {
         color: blue500,

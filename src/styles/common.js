@@ -23,6 +23,9 @@ const common = {
         backgroundColor: colors.grey100,
         paddingBottom: 40
     },
+    alignCenter: {
+        margin: '0 auto'
+    },
     hGradient: {
         backgroundImage: `linear-gradient(to right, ${colors.blue500}, ${colors.blue700})`
     },

@@ -4,13 +4,26 @@ import {fetchPlugin} from 'actions/plugins';
 import Container from 'components/Container';
 import Flex from 'components/Flex';
 import Spinner from 'components/Spinner';
+import Collaborators from './Collaborators';
 import Description from './Description';
 import Details from './Details';
+import Install from './Install';
 import {common} from 'styles';
 
 const style = {
-    plugin: {
-        width: 960
+    container: {
+        ...common.container,
+        ...common.borderBox
+    },
+    flex: {
+        width: 1440,
+        margin: '0 auto'
+    },
+    left: {
+        flexBasis: '65%'
+    },
+    right: {
+        flexBasis: '33%'
     }
 };
 
@@ -31,34 +44,46 @@ class PluginDetail extends Component {
         if(isFetching){
             content = <Spinner/>;
         } else if(plugin) {
-            content = [
-                <Container
-                    header={plugin.name}
-                    key={0}
-                    style={style.plugin}>
-                    <Details
-                        author={author}
-                        collaborators={collaborators}
-                        plugin={plugin}/>
-                </Container>,
-                <Container
-                    key={1}
-                    style={style.plugin}>
-                    <Description
-                        source={plugin.description}/>
-                </Container>
-            ];
+            content = (
+                <Flex
+                    justify="space-between"
+                    style={style.flex}>
+                    <div
+                        key={0}
+                        style={style.left}>
+                        <Container
+                            header={plugin.name}>
+                            <Details
+                                author={author}
+                                collaborators={collaborators}
+                                plugin={plugin}/>
+                        </Container>
+                        <Container
+                            header="Description">
+                            <Description
+                                source={plugin.description}/>
+                        </Container>
+                    </div>
+                    <div
+                        key={1}
+                        style={style.right}>
+                        <Container
+                            header="Install">
+                            <Install name={plugin.slug}/>
+                        </Container>
+                        <Container
+                            header="Collaborators">
+                            <Collaborators collaborators={collaborators}/>
+                        </Container>
+                    </div>
+                </Flex>
+            );
         }
         return (
-            <Flex
-                align="center"
-                column={true}
-                style={[
-                    common.borderBox,
-                    common.container
-                ]}>
+            <div
+                style={style.container}>
                 {content}
-            </Flex>
+            </div>
         )
     }
 }

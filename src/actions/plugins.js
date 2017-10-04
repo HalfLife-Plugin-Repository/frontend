@@ -46,7 +46,7 @@ export function loadRecentlyUpdated(){
  */
 export function loadPlugins(query){
     return (dispatch) => {
-        dispatch(fetchPlugins(`${API_URL}/plugins`, query));
+        dispatch(fetchPlugins(`${API_URL}/plugins/`, query));
     }
 }
 
@@ -56,7 +56,7 @@ export function loadPlugins(query){
 export function fetchPlugin(slug){
     return {
         [CALL_API]: {
-            endpoint: `${API_URL}/plugins/${slug}`,
+            endpoint: `${API_URL}/plugins/${slug}/`,
             method: 'GET',
             types: [
                 constants.FETCH_PLUGIN_REQUEST,
