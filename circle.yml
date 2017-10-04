@@ -1,0 +1,19 @@
+#circleci configuration
+machine:
+  environment:
+    NODE_ENV: development
+  node:
+    version:
+      7.7.3
+
+dependencies:
+  override:
+    - npm install
+    - npm install -g webpack
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - NODE_ENV=production webpack
+      - aws s3 sync ./build s3://hlpr.com/ --delete

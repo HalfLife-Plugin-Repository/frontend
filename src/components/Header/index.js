@@ -12,7 +12,8 @@ const style = {
     base: {
         height: 97,
         width: '100%',
-        padding: '0 29px'
+        padding: '0 29px',
+        zIndex: 1000
     },
     opaque: {
         backgroundColor: blue500,

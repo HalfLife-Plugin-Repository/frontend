@@ -53,7 +53,7 @@ const Search = (props) => (
         style={[
             common.hGradient,
             style.container
-    ]}>
+        ]}>
         <div style={common.content}>
             <h2 style={[
                 common.white,

@@ -1,6 +1,6 @@
+import fetch from 'isomorphic-fetch';
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {changePassword} from 'actions/auth';
+import {API_URL} from 'constants/api';
 import {LocalForm, Control} from 'react-redux-form';
 import Button from 'components/Button';
 import Flex from 'components/Flex';
@@ -11,7 +11,14 @@ import {common} from 'styles';
 
 class ChangePassword extends Component {
     handleSubmit = (values) => {
-        this.props.changePassword(values);
+        fetch(`${API_URL}/user/accounts/change_password/`, {
+            method: 'POST',
+            body: JSON.stringify(values),
+            headers: {
+                'Authorization': `JWT ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            }
+        });
     };
 
     render(){
@@ -73,14 +80,4 @@ class ChangePassword extends Component {
     }
 }
 
-const mapStateToProps = () => {
-    return {}
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changePassword: (passwords) => dispatch(changePassword(passwords))
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);
+export default ChangePassword;

@@ -129,22 +129,3 @@ export function updateProfile(profile){
         }
     }
 }
-
-/**
- * Updates a user's password.
- */
-export function changePassword(passwords){
-    return {
-        [CALL_API]: {
-            endpoint: `${API_URL}/user/accounts/change_password/`,
-            method: 'POST',
-            types: [
-                constants.CHANGE_PASSWORD_REQUEST,
-                constants.CHANGE_PASSWORD_SUCCESS,
-                constants.CHANGE_PASSWORD_FAILURE
-            ],
-            body: JSON.stringify(passwords),
-            headers: {'Content-Type': 'application/json'}
-        }
-    }
-}
